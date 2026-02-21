@@ -11,3 +11,54 @@ initialCards.forEach(function(card){
     console.log("Nome do Card: " + card.name);
     console.log("Link do Card: " + card.link);
 });
+
+
+
+//handle profile edit popup
+const modal = document.querySelector("#edit-popup");
+const editBtn = document.querySelector(".profile__edit-button");
+const closeBtn = modal.querySelector(".popup__close");
+const saveBtn = modal.querySelector(".popup__button");
+const formElement = modal.querySelector("#edit-profile-form");
+
+function openModal(){
+    modal.classList.add("popup_is-opened");
+ };
+
+function closeModal(){
+    modal.classList.remove("popup_is-opened");
+};
+
+function fillProfileForm(){
+const actualName = document.querySelector(".profile__title").textContent;
+const actualDescription = document.querySelector(".profile__description").textContent;
+
+document.querySelector(".popup__input_type_name").value = actualName;
+document.querySelector(".popup__input_type_description").value = actualDescription; 
+};
+
+function handleOpenEditModal(){
+ fillProfileForm();
+ openModal();
+};
+
+editBtn.addEventListener("click",handleOpenEditModal)
+closeBtn.addEventListener("click",closeModal)
+
+
+//submit handler
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+
+  const nameInput = formElement.querySelector(".popup__input_type_name").value
+  const jobInput = formElement.querySelector(".popup__input_type_description").value
+
+  document.querySelector(".profile__title").textContent = nameInput
+  document.querySelector(".profile__description").textContent = jobInput
+
+closeModal();
+}
+
+formElement.addEventListener("submit", handleProfileFormSubmit);
+
+
