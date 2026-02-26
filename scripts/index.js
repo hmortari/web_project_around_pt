@@ -1,3 +1,4 @@
+const cardsContainer = document.querySelector(".cards__list");
 const initialCards = [
     {name: "Vale de Yosemite", link:"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg"},
     {name: "Lago Louise", link:"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg"},
@@ -7,10 +8,34 @@ const initialCards = [
     {name: "Lago di Braies", link:"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg"}
 ];
 
-initialCards.forEach(function(card){
-    console.log("Nome do Card: " + card.name);
-    console.log("Link do Card: " + card.link);
+//ADD CARD FROM ARRAY TO HMTL
+function getCardElement (name = "Lugar sem nome", link = "./images/placeholder.jpg"){
+
+    const cardElement = document.querySelector("#card-template").content.cloneNode(true);    
+    const cardTitle = cardElement.querySelector(".card__title")
+    const cardImage = cardElement.querySelector(".card__image")
+
+    cardTitle.textContent = name;
+    cardImage.alt = name;
+    cardImage.src = link;
+
+    return cardElement;
+};
+
+function renderCard(name, link, container){
+    const cardElement = getCardElement(name,link);
+    container.prepend(cardElement);
+}
+
+initialCards.forEach((card) => {
+    renderCard(card.name, card.link,cardsContainer);
 });
+    
+
+
+
+
+
 
 
 
