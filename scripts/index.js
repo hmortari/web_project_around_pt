@@ -8,45 +8,40 @@ const initialCards = [
     {name: "Lago di Braies", link:"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg"}
 ];
 
-
 //ADD CARD FROM ARRAY TO HMTL
 function getCardElement (name = "Lugar sem nome", link = "./images/placeholder.jpg"){
 
-    const cardElement = document.querySelector("#card-template").content.querySelector(".card")
-  .cloneNode(true);    
+    const cardElement = document.querySelector("#card-template").content.querySelector(".card").cloneNode(true);    
     const cardTitle = cardElement.querySelector(".card__title")
     const cardImage = cardElement.querySelector(".card__image")
     const likeBtn  = cardElement.querySelector( ".card__like-button")
     const deleteBtn  = cardElement.querySelector(".card__delete-button")
+    
+    function handleLikedBtn (){
+    likeBtn.classList.toggle("card__like-button_is-active")
+};
+    function handleDeleteBtn (){
+    cardElement.remove();
+};
+    function handleImagePop(){
+        imageInfo.alt = cardImage.alt;
+        imageInfo.src = cardImage.src;
+        imageTitle.textContent = cardTitle.textContent;
+        openModal(imagePop);
 
+    }
 
     cardTitle.textContent = name;
     cardImage.alt = name;
     cardImage.src = link;
 
-    function handleLikedBtn (){
-    likeBtn.classList.toggle("card__like-button_is-active")
-};
-    function handleDeleteBtn (){
-     cardElement.remove();
-};
-
-    function handleImageView(){
-        Definir o texto do elemento de legenda do modal.
-        Definir o src da imagem do modal.
-        Definir o alt da imagem do modal.
-        Abrir o modal usando a função openModal().
-    };
 
     deleteBtn.addEventListener("click",handleDeleteBtn);
     likeBtn.addEventListener("click",handleLikedBtn);
-    cardImage.addEventListener("click",HANDLER);
-
+    cardImage.addEventListener("click",handleImagePop);
 
     return cardElement;
 };
-
-
 
 
 function renderCard(name, link, container){
@@ -138,3 +133,14 @@ function handleCardFormSubmit(evt){
    closeModal(newCardPop);
 };
 
+
+
+//Image Popup
+    const imagePop = document.querySelector("#image-popup")
+    const imageInfo = imagePop.querySelector(".popup__image");
+    const imageTitle = imagePop.querySelector(".popup__caption");
+    const imagePopcloseBtn = imagePop.querySelector(".popup__close");
+
+
+
+imagePopcloseBtn.addEventListener("click",() => closeModal(imagePop));
