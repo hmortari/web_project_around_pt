@@ -23,9 +23,9 @@ Funcionalidades implementadas:
 
 Principais conceitos aplicados:
 - Manipulação do DOM
-- `addEventListener`
-- `classList`
-- Criação dinâmica via `<template>`
+- `addEventListener` em botões e ações do usuario
+- Manipulação de Popups com Classes (`classList`)
+- Criação de blocos usando `<template>`
 - Funções reutilizáveis para controle de modais
 
 ---

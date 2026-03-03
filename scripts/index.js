@@ -8,7 +8,7 @@ const initialCards = [
     {name: "Lago di Braies", link:"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg"}
 ];
 
-//ADD CARD FROM ARRAY TO HMTL
+//Create Card 
 function getCardElement (name = "Lugar sem nome", link = "./images/placeholder.jpg"){
 
     const cardElement = document.querySelector("#card-template").content.querySelector(".card").cloneNode(true);    
@@ -43,12 +43,12 @@ function getCardElement (name = "Lugar sem nome", link = "./images/placeholder.j
     return cardElement;
 };
 
-
+//Input card to HTML
 function renderCard(name, link, container){
     const cardElement = getCardElement(name,link);
     container.prepend(cardElement);
 }
-
+//Create card FROM Array
 initialCards.forEach((card) => {
     renderCard(card.name, card.link,cardsContainer);
 });
@@ -110,29 +110,26 @@ editFormElement.addEventListener("submit", handleProfileFormSubmit);
 const newCardPop = document.querySelector("#new-card-popup");
 const newCardBtn = document.querySelector(".profile__add-button");
 const newCardCloseBtn = newCardPop.querySelector(".popup__close");
-const newCardSaveBtn = newCardPop.querySelector(".popup__button");
 const newCardCardForm = newCardPop.querySelector("#new-card-form");
-
-// openModal(newCardPop);
-newCardBtn.addEventListener("click",() => openModal(newCardPop));
-newCardCloseBtn.addEventListener("click",() => closeModal(newCardPop));
-newCardSaveBtn.addEventListener("submit", handleProfileFormSubmit);
-
-
 
 // New Card Handler
 function handleCardFormSubmit(evt){
    evt.preventDefault();
    
-   const cardName = cardForm.querySelector(".popup__input_type_card-name").value;
-   const cardLink = cardForm.querySelector(".popup__input_type_url").value;
+   const cardName = newCardCardForm.querySelector(".popup__input_type_card-name").value;
+   const cardLink = newCardCardForm.querySelector(".popup__input_type_url").value;
 
-    document.querySelector(".card__title").textContent = nameInput
-    document.querySelector(".card__description").textContent = jobInput
+    renderCard(cardName,cardLink,cardsContainer);
 
+    console.log("submit funcionando");
+    newCardCardForm.reset();
    closeModal(newCardPop);
 };
 
+newCardBtn.addEventListener("click",() => openModal(newCardPop));
+newCardCloseBtn.addEventListener("click",() => closeModal(newCardPop));
+//Pega o botão do FORM
+newCardCardForm.addEventListener("submit", handleCardFormSubmit);
 
 
 //Image Popup
