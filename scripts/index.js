@@ -54,15 +54,30 @@ initialCards.forEach((card) => {
 });
     
 
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_is-opened");
+    if (openedPopup) closeModal(openedPopup);
+  }
+}
 
-function openModal(popup){
-    popup.classList.add("popup_is-opened");
- };
+function openModal(popup) {
+  popup.classList.add("popup_is-opened");
+  document.addEventListener("keydown", handleEscClose);
+}
 
-function closeModal(popup){
-    popup.classList.remove("popup_is-opened");
-};
+function closeModal(popup) {
+  popup.classList.remove("popup_is-opened");
+  document.removeEventListener("keydown", handleEscClose);
+}
 
+//fechar clickando fora
+
+document.querySelectorAll(".popup").forEach(popup => {
+  popup.addEventListener("mousedown", evt => {
+    if (evt.target === popup) closeModal(popup);
+  });
+});
 
 
 
@@ -70,7 +85,6 @@ function closeModal(popup){
 const editPop = document.querySelector("#edit-popup");
 const editBtn = document.querySelector(".profile__edit-button");
 const editCloseBtn = editPop.querySelector(".popup__close");
-const editSaveBtn = editPop.querySelector(".popup__button");
 const editFormElement = editPop.querySelector("#edit-profile-form");
 
 function fillProfileForm(){
@@ -83,8 +97,10 @@ document.querySelector(".popup__input_type_description").value = actualDescripti
 
 function handleOpenEditModal(){
  fillProfileForm();
- openModal(editPop);
+ resetValidation(editFormElement, validationConfig);
+  openModal(editPop);
 };
+
 
 //submit handler
 function handleProfileFormSubmit(evt) {
@@ -121,12 +137,15 @@ function handleCardFormSubmit(evt){
 
     renderCard(cardName,cardLink,cardsContainer);
 
-    console.log("submit funcionando");
-    newCardCardForm.reset();
-   closeModal(newCardPop);
+   newCardCardForm.reset();
+    resetValidation(newCardCardForm, validationConfig);
+    closeModal(newCardPop); 
 };
 
-newCardBtn.addEventListener("click",() => openModal(newCardPop));
+newCardBtn.addEventListener("click", () => {
+  resetValidation(newCardCardForm, validationConfig);
+  openModal(newCardPop);
+});
 newCardCloseBtn.addEventListener("click",() => closeModal(newCardPop));
 //Pega o botão do FORM
 newCardCardForm.addEventListener("submit", handleCardFormSubmit);

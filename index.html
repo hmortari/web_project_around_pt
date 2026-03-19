@@ -7,6 +7,7 @@
     <title>Around The U.S.</title>
     <link href="./pages/index.css" rel="stylesheet" />
     <script src="scripts/index.js" defer></script>
+    <script src="scripts/validate.js" defer></script>
 
   </head>
   <body class="page">
@@ -74,50 +75,66 @@
             type="button"
           ></button>
           <h3 class="popup__title">Editar perfil</h3>
-          <form class="popup__form" id="edit-profile-form">
+          <form class="popup__form" id="edit-profile-form" novalidate>
             <input
               class="popup__input popup__input_type_name"
               name="name"
               placeholder="Nome"
               type="text"
+              required
+              minlength="2"
+              maxlength="40"  
             />
+            <span class="popup__error"></span>
             <input
               class="popup__input popup__input_type_description"
               name="description"
               placeholder="Sobre mim"
               type="text"
+              required
+              minlength="2"
+              maxlength="200"  
             />
-            <button class="button popup__button" type="submit">Salvar</button>
+             <span class="popup__error"></span>
+            <button class="button popup__button" type="submit" disabled>Salvar</button>
           </form>
         </div>
       </div>
-      <div class="popup" id="new-card-popup">
-        <div class="popup__content">
-          <button
-            aria-label="Fechar pop-up"
-            class="popup__close"
-            type="button"
-          ></button>
-          <h3 class="popup__title">Novo local</h3>
-          <form class="popup__form" id="new-card-form">
-            <input
-              class="popup__input popup__input_type_card-name"
-              name="place-name"
-              placeholder="Título"
-              required
-              type="text"
-            />
-            <input
-              class="popup__input popup__input_type_url"
-              name="link"
-              placeholder="Link de Imagem"
-              required
-              type="url"
-            />
-            <button class="button popup__button" type="submit">Criar</button>
-          </form>
-        </div>
-      </div>
+ <div class="popup" id="new-card-popup">
+  <div class="popup__content">
+    <button
+      aria-label="Fechar pop-up"
+      class="popup__close"
+      type="button"
+    ></button>
+
+    <h3 class="popup__title">Novo local</h3>
+
+    <form class="popup__form" id="new-card-form" novalidate>
+      <input
+        class="popup__input popup__input_type_card-name"
+        name="place-name"
+        placeholder="Título"
+        required
+        type="text"
+      />
+      <span class="popup__error"></span>
+
+      <input
+        class="popup__input popup__input_type_url"
+        name="link"
+        placeholder="Link de Imagem"
+        required
+        type="url"
+      />
+      <span class="popup__error"></span>
+
+      <button class="popup__button" type="submit" disabled>
+        Criar
+      </button>
+    </form>
+  </div>
+</div>
       <div class="popup" id="image-popup">
         <div class="popup__content popup__content_content_image">
           <button
@@ -132,3 +149,7 @@
     </div>
   </body>
 </html>
+
+
+
+
