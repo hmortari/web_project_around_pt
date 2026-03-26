@@ -2,9 +2,9 @@
 
 
 class Card{
-    constructor(name = "Lugar sem nome", link = "./images/placeholder.jpg",templateSelector){
-        this._name = name;
-        this._link = link;
+    constructor(data,templateSelector){
+        this._name = data.name;
+        this._link = data.link;
         this._templateSelector = templateSelector;
     }
 
@@ -20,18 +20,12 @@ class Card{
     _handleDeleteClick(){
         this._element.remove()
     }
-    _handleImagePop(){
-        imageInfo.alt = this._name;
-        imageInfo.src = this._link;
-        imageTitle.textContent = this._name;
-        openModal(imagePop)
-    }
 
     //Event Listeners
     _setEventListeners(){
         this._likeBtn.addEventListener("click",() => this._handleLikedClick());
         this._deleteBtn.addEventListener("click",() => this._handleDeleteClick());
-        this._cardImage.addEventListener("click",() => this._handleImagePop());
+        this._cardImage.addEventListener("click",() => handleImageClick(this._name, this._link));
     }
     
 
@@ -51,3 +45,6 @@ class Card{
     return this._element;
     }
 }
+
+
+export {Card};

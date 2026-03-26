@@ -41,6 +41,7 @@ JavaScript (ES6+)
 - Alteração de Foto de Perfil
 - Adição de mais fotos por Lugar
 - Adição de Paises e Datas e Filtro
+- Adicionar Fallbacks na classe Card, o exercicio pediu/não falou para manter.
 
 Henrique Mortari
 Bootcamp TripleTen 2026 
