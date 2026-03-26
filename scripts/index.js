@@ -8,6 +8,7 @@ const initialCards = [
     {name: "Lago di Braies", link:"https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg"}
 ];
 
+
 //Create Card 
 function getCardElement (name = "Lugar sem nome", link = "./images/placeholder.jpg"){
 

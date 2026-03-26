@@ -42,6 +42,5 @@ JavaScript (ES6+)
 - Adição de mais fotos por Lugar
 - Adição de Paises e Datas e Filtro
 
-
 Henrique Mortari
 Bootcamp TripleTen 2026 

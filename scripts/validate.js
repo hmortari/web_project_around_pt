@@ -8,7 +8,7 @@ const validationConfig = {
   errorClass: "popup__error_visible"
 };
 
-function showInputError(form, input, config) {
+function showInputError(input, config) {
   const errorElement = input.nextElementSibling;
 
   input.classList.add(config.inputErrorClass);
@@ -16,7 +16,7 @@ function showInputError(form, input, config) {
   errorElement.classList.add(config.errorClass);
 }
 
-function hideInputError(form, input, config) {
+function hideInputError(input, config) {
   const errorElement = input.nextElementSibling;
 
   input.classList.remove(config.inputErrorClass);
@@ -24,11 +24,11 @@ function hideInputError(form, input, config) {
   errorElement.classList.remove(config.errorClass);
 }
 
-function checkInputValidity(form, input, config) {
+function checkInputValidity(input, config) {
   if (!input.validity.valid) {
-    showInputError(form, input, config);
+    showInputError(input, config);
   } else {
-    hideInputError(form, input, config);
+    hideInputError(input, config);
   }
 }
 
