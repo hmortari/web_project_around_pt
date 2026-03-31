@@ -1,0 +1,20 @@
+{
+  "name": "web_project_around_pt",
+  "version": "1.0.0",
+  "description": "Photo Gallery",
+  "homepage": "https://github.com/hmortari/web_project_around_pt#readme",
+  "bugs": {
+    "url": "https://github.com/hmortari/web_project_around_pt/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hmortari/web_project_around_pt.git"
+  },
+  "license": "ISC",
+  "author": "hmortari",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": " echo \\\"Error: no test specified\\\" && exit 1"
+  }
+}

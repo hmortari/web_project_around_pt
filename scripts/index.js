@@ -67,7 +67,7 @@ import { openModal, closeModal,setPopupEventListeners } from "./utils.js";
                 const name = newCardCardForm.querySelector(".popup__input_type_card-name").value;
                 const link = newCardCardForm.querySelector(".popup__input_type_url").value;
               
-                  renderCard(name,link,cardsContainer);
+                  renderCard(name,link,cardsContainer,);
                   newCardCardForm.reset();
                   newCardValidator._resetValidation();
                   closeModal(newCardPop); 
@@ -121,11 +121,11 @@ import { openModal, closeModal,setPopupEventListeners } from "./utils.js";
 
   //Create card FROM popUp
       function renderCard(name, link, container){
-      const card = new Card({name, link}, "#card-template");
+      const card = new Card({name, link}, "#card-template",handleImageClick);
       const cardElement = card.generateCard();
       container.prepend(cardElement);
         }
   //Create card FROM Array
       initialCards.forEach((item) => {
-            renderCard(item.name, item.link,cardsContainer);
+            renderCard(item.name, item.link,cardsContainer,handleImageClick);
         });
