@@ -1,6 +1,3 @@
-
-
-
 class Popup {
     constructor(popSelector){
         this._popup = document.querySelector(popSelector)
@@ -43,8 +40,58 @@ class Popup {
 }
 
 
+class PopupWithImage extends Popup{
+    constructor(popSelector){
+        super(popSelector);
+        this._name = this._popup.querySelector(".popup__caption");
+        this._image = this._popup.querySelector(".popup__image")
+    }
+    
+    open(name,link){
+        this._name.textContent = name;
+        this._image.alt = name;
+        this._image.src = link;
+         
+        super.open(); 
+    }
+}
+
+
+class PopupWithForm extends Popup{
+     constructor(popSelector,formSubmit){
+        super(popSelector);
+        this._formElement = this._popup.querySelector(".popup__form")
+        this._formInputs = this._formElement.querySelectorAll(".popup__input");
+        this._formSubmit = formSubmit;
+    }
+
+    _getInputValues(){
+        const inputList = {};  //cria um objeto para ser preenchido com os inputs
+       
+        this._formInputs.forEach((input) => {
+            inputList[input.name] = input.value;
+        });
+        return inputList;
+    }
+
+
+    close(){
+        this._formElement.reset()
+        super.close();
+    }
+
+    setEventListeners(){
+        super.setEventListeners()
+        
+        this._formElement.addEventListener("submit", (evt) =>{
+            evt.preventDefault();
+            const inputList = this._getInputValues();
+             this._formSubmit(inputList);
+        })
+    }
+
+}
 
 
 
-class PopupWithImage extends Popup{}
-class PopupWithForm extends Popup{}
+export {Popup,PopupWithImage,PopupWithForm};

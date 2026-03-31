@@ -20,6 +20,7 @@ class Section{
         this.addItem()
 
     }
-
-    
 }
+
+
+export {Section};

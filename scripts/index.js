@@ -12,6 +12,9 @@ const initialCards = [
 
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
+import { Popup,PopupWithImage,PopupWithForm } from "./Popup.js";
+import { Section } from "./Section.js";
+import { UserInfo } from "./UserInfo.js";
 import { openModal, closeModal,setPopupEventListeners } from "./utils.js";
 
 
