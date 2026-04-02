@@ -65,6 +65,7 @@ class PopupWithForm extends Popup{
         this._formSubmit = formSubmit;
     }
 
+    //
     _getInputValues(){
         const inputList = {};  //cria um objeto para ser preenchido com os inputs
        
@@ -74,6 +75,13 @@ class PopupWithForm extends Popup{
         return inputList;
     }
 
+    setInputValues(data){
+        this._formInputs.forEach((input) => {
+            console.log("input_name",input.name)
+            console.log("value",data[input.name])
+            input.value = data[input.name]
+        });
+    }
 
     close(){
         this._formElement.reset()
@@ -95,3 +103,8 @@ class PopupWithForm extends Popup{
 
 
 export {Popup,PopupWithImage,PopupWithForm};
+
+
+
+
+

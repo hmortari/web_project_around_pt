@@ -1,5 +1,4 @@
 
-
 class UserInfo{
     constructor({nameSelector,jobSelector}){
         this._elementName = document.querySelector(nameSelector);
@@ -9,7 +8,7 @@ class UserInfo{
     getUserInfo(){
 //pega os dados que já existem e exibe (LÊ)
          return {
-            nome: this._elementName.textContent,
+            name: this._elementName.textContent,
             job: this._elementJob.textContent,
         };
     }
@@ -18,9 +17,6 @@ class UserInfo{
         this._elementName.textContent = name
         this._elementJob.textContent = job
     }
-
-
-
 }
 
 
