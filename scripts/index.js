@@ -47,23 +47,14 @@ import { UserInfo } from "./UserInfo.js";
     const imagePop = new PopupWithImage("#image-popup");
     imagePop.setEventListeners();
     function handleImageClick(name,link){imagePop.open(name,link)};
-  
-  // de onde veio a createCard(data?)
 
-  //Section
-    //Create card FROM Array
-    const section = new Section({
-        items: initialCards, 
-        renderer:(item) => {
-        // cria e rendereiza cada card
-            const card = new Card (item, "#card-template",handleImageClick);
-            const cardElement = card.generateCard();
-        //Adiciona todos os cards no Container
-            section.addItem(cardElement);
-        }
-      }, cardsContainer);
 
-      section.renderItems()
+  //Construtores
+    //Cria um card a partid de "data" e Renderiza.
+    function createCard(data){
+      const card = new Card (data, "#card-template",handleImageClick);
+      return card.generateCard();
+    }
 
   //Edit Profile Popup       
     //Cria o popup e renderiza as informações
@@ -77,11 +68,27 @@ import { UserInfo } from "./UserInfo.js";
 
     editProfile.setEventListeners();
   
+  //Cria um card do Arreay InitialCards
+      const section = new Section({
+          items: initialCards, 
+          renderer:(item) => {
+          // cria um card para cada item de InitialCards
+              const cardElement = createCard(item);
+          //Adiciona cada card no Container
+              section.addItem(cardElement);
+          }
+        }, cardsContainer);
+
+      section.renderItems()
+
+
   //New Card Popup
     const newCardPop = new PopupWithForm("#new-card-popup",(data) => {
-            const card = new Card (data, "#card-template",handleImageClick);
-            const cardElement = card.generateCard();
-          //Adiciona todos os cards no Container
+      //cardData serve para "formatar" o nome que vem do form pro que eu defini
+      const cardData = {
+        name: data["place-name"], link: data.link}
+      
+      const cardElement = createCard(cardData);
             section.addItem(cardElement);
             newCardPop.close();
       });
