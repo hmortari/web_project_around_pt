@@ -40,14 +40,13 @@ import { UserInfo } from "./UserInfo.js";
 //5. Instancias de Classes
   //Definir onde pegar as informações de perfil
     const profileData = new UserInfo({
-      nameSelector: ".profile__name",
+      nameSelector: ".profile__title",
       jobSelector: ".profile__description"
     });
   //Image Popup
     const imagePop = new PopupWithImage("#image-popup");
     imagePop.setEventListeners();
     function handleImageClick(name,link){imagePop.open(name,link)};
-
 
   //Construtores
     //Cria um card a partid de "data" e Renderiza.
@@ -111,6 +110,7 @@ import { UserInfo } from "./UserInfo.js";
   editProfileBtn.addEventListener("click",()=>{
        //Informação atual do usuario
         let currentUser = profileData.getUserInfo();
+        console.log(currentUser)
         editProfile.setInputValues(currentUser);
         editProfile.open();
     });
