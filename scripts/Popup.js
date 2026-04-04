@@ -1,6 +1,8 @@
 class Popup {
     constructor(popSelector){
         this._popup = document.querySelector(popSelector)
+        //"Prende" a referencia de Popup quando usar a função de callBack.
+        this._handleEscClose = this._handleEscClose.bind(this);
     }
 
     open(){

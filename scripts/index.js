@@ -110,7 +110,6 @@ import { UserInfo } from "./UserInfo.js";
   editProfileBtn.addEventListener("click",()=>{
        //Informação atual do usuario
         let currentUser = profileData.getUserInfo();
-        console.log(currentUser)
         editProfile.setInputValues(currentUser);
         editProfile.open();
     });
