@@ -3,7 +3,6 @@ class Card{
     constructor(data,templateSelector,handleImageClick){
         
         const {name = "Sem Nome", link = "Sem Link"} = data
-        
         this._name = name;
         this._link = link;
         this._templateSelector = templateSelector;

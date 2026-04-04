@@ -15,7 +15,7 @@
   grid-gap: 7px 17px;
 }
 
-.profile__title {
+.profile__name {
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
@@ -83,7 +83,7 @@
     grid-template-columns: auto;
   }
 
-  .profile__title {
+  .profile__name {
     font-size: 32px;
     line-height: 38px;
     max-width: 340px;
@@ -107,7 +107,7 @@
     gap: 14px;
   }
 
-  .profile__title {
+  .profile__name {
     font-size: 22px;
     min-width: 201px;
     max-width: 222px;

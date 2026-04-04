@@ -1,9 +1,10 @@
 
 class Section{
-    constructor({items, renderer}, containerSelector){
+    // renderer: diz COMO criar UM card.
+    constructor({items, renderer}, selectedContainer){
         this._items = items
         this._renderer = renderer
-        this._container = document.querySelector(containerSelector);
+        this._container = selectedContainer
     }
 
 //criar o código HTML que o item vai usar
@@ -11,16 +12,21 @@ class Section{
         this._container.append(element)
     }
 
-    renderer(){  
+    renderItems(){  
 //Itera todos os itens e renderiza de acordo com o renderizador : precisa definir em INDEX.JS   
         this._items.forEach(item => {
             this._renderer(item);
         });
-
-        this.addItem()
-
     }
 }
 
 
 export {Section};
+
+
+//PARA USAR: 
+// const sectionName = new Section({items: array com as infos, renderer: () => {const de cards, sectionName.addItem(card gerado)}}, container)
+
+
+
+// porque tem renderer e render??
