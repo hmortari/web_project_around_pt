@@ -57,12 +57,9 @@ class FormValidator{
         })
     }
 
-    _resetValidation() {
+    resetValidation() {
         this._inputList.forEach(input => {
-            const errorElement = input.nextElementSibling;
-            input.classList.remove( this._config.inputErrorClass)
-            errorElement.textContent = ""
-            errorElement.classList.remove(this._config.errorClass)
+            this._hideInputError(input);
         });
 
     this._toggleButtonState();

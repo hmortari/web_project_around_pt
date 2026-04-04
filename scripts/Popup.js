@@ -67,7 +67,6 @@ class PopupWithForm extends Popup{
         this._formSubmit = formSubmit;
     }
 
-    //
     _getInputValues(){
         const inputList = {};  //cria um objeto para ser preenchido com os inputs
        

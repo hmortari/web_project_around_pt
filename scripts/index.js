@@ -58,11 +58,7 @@ import { UserInfo } from "./UserInfo.js";
   //Edit Profile Popup       
     //Cria o popup e renderiza as informações
     const editProfile = new PopupWithForm("#edit-popup",(formData) => { 
-        currentUser = {
-        name: formData.name,
-        job: formData.job
-         };
-        profileData.setUserInfo(currentUser);
+        profileData.setUserInfo(formData);
       });
 
     editProfile.setEventListeners();
@@ -104,12 +100,14 @@ import { UserInfo } from "./UserInfo.js";
 
 //7. Inicialização (render)
  newCardBtn.addEventListener("click", () => {
+            newCardValidator.resetValidation();
             newCardPop.open();
           });
 
   editProfileBtn.addEventListener("click",()=>{
        //Informação atual do usuario
-        let currentUser = profileData.getUserInfo();
-        editProfile.setInputValues(currentUser);
+        const userData = profileData.getUserInfo();
+        editProfile.setInputValues(userData);
+        editValidator.resetValidation();
         editProfile.open();
     });
