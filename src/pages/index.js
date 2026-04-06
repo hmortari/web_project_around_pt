@@ -40,6 +40,7 @@ function createCard(data) {
 //Cria o popup e renderiza as informações
 const editProfile = new PopupWithForm("#edit-popup", (formData) => {
   profileData.setUserInfo(formData);
+  editProfile.close();
 });
 
 editProfile.setEventListeners();
